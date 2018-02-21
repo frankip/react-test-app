@@ -1,0 +1,28 @@
+{
+  "name": "react-test-app",
+  "version": "1.0.0",
+  "description": "A simple react application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frankip/react-test-app.git"
+  },
+  "keywords": [
+    "react",
+    "babel",
+    "webpack"
+  ],
+  "author": "frankip",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frankip/react-test-app/issues"
+  },
+  "homepage": "https://github.com/frankip/react-test-app#readme",
+  "devDependencies": {
+    "webpack": "^3.11.0"
+  }
+}
