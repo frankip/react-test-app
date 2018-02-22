@@ -4,6 +4,7 @@ const path = require('path')
 
 // Import html webpack plugin
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 // Constant with our paths
 const paths = {
@@ -23,8 +24,9 @@ module.exports = {
   // index.html is used as a template in which it'll inject bundled app.
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(paths.SRC, "index.html")
-    })
+      template: path.join(paths.SRC, "index.html"),
+    }),
+    new ExtractTextPlugin('style.bundle.css'),
   ],
   // Loaders configuration -> ADDED IN THIS STEP
   // We are telling webpack to use "babel-loader" for .js and .jsx files
@@ -33,9 +35,18 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ["babel-loader"]
+        use: ["babel-loader",],
+      },
+      // CSS loader to CSS files -> ADDED IN THIS STEP
+      // Files will get handled by css loader and then passed to the extract text plugin
+      // which will write it to the file we defined above
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract({
+          use: "css-loader",
+        }),
       }
-    ]
+    ],
   },
   // Enable importing JS files without specifying their's extenstion -> ADDED IN THIS STEP
   //
@@ -45,6 +56,6 @@ module.exports = {
   // Instead of:
   // import MyComponent from './my-component.jsx';
   resolve: {
-      extensions: [".js", ".jsx"]
+    extensions: [".js", ".jsx"]
   }
 };

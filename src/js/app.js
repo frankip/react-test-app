@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { render } from 'react-dom';
 
+import '../css/main.css'; // import CSS
+
 export default class Hello extends Component {
     render() {
         return(
