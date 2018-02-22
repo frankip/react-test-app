@@ -22,13 +22,29 @@ module.exports = {
   // Tell webpack to use html plugin -> ADDED IN THIS STEP
   // index.html is used as a template in which it'll inject bundled app.
   plugins: [
-      new HtmlWebpackPlugin({
-          template: path.join(paths.SRC, 'index.html'),
-      }),
+    new HtmlWebpackPlugin({
+      template: path.join(paths.SRC, "index.html")
+    })
   ],
-  // Dev server configuration
-  // Now it uses the "src" folder as the starting point
-//   devServer: {
-//     contentBase: paths.SRC
-//   }
+  // Loaders configuration -> ADDED IN THIS STEP
+  // We are telling webpack to use "babel-loader" for .js and .jsx files
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: ["babel-loader"]
+      }
+    ]
+  },
+  // Enable importing JS files without specifying their's extenstion -> ADDED IN THIS STEP
+  //
+  // So we can write:
+  // import MyComponent from './my-component';
+  //
+  // Instead of:
+  // import MyComponent from './my-component.jsx';
+  resolve: {
+      extensions: [".js", ".jsx"]
+  }
 };
