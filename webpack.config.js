@@ -15,10 +15,10 @@ const paths = {
 
 // Webpack configuration
 module.exports = {
-  entry: path.join(paths.JS, "app.js"),
+  entry: path.join(paths.JS, "main.js"),
   output: {
     path: paths.DIST,
-    filename: "app.bundle.js"
+    filename: "main.bundle.js"
   },
   // Tell webpack to use html plugin -> ADDED IN THIS STEP
   // index.html is used as a template in which it'll inject bundled app.

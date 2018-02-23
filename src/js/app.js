@@ -1,14 +1,35 @@
 import React, { Component } from "react";
-import { render } from 'react-dom';
+import Projects from './components/projects';
 
-import '../css/main.css'; // import CSS
+class App extends Component{
 
-export default class Hello extends Component {
-    render() {
-        return(
-            <div >Hello from react </div>
+    constructor(){
+        this.state = {
+            projects: [
+                {
+                "title": "Web development",
+                "category": "web Design"
+            },
+            {
+                "title": "Web development",
+                "category": "web Design"
+            },
+            {
+                "title": "Web development",
+                "category": "web Design"
+            },
+            ]
+        }
+    }
+    render(){
+        return (
+            <div className='app'>
+            <h2>Hi there,</h2>
+           <div >Hello from {this.props.name} </div>
+           <Projects/>
+            </div>
         );
     }
 }
 
-render (<Hello/>, document.getElementById('app'));
+export default App 
