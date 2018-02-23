@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import uuid from 'uuid';
 import Projects from './components/projects';
 import AddProjects from './components/addProject';
 
@@ -12,21 +13,23 @@ class App extends Component{
     }
     componentWillMount(){
         this.setState({
-            projects :[
-
-                {
-                    title: "Web development",
-                    category: "web Design"
-                },
-                {
-                    title: "Social App",
-                    category: "Mobile Dev"
-                },
-                {
-                    title: "Shopping cart",
-                    category: "web Development"
-                },
-            ]
+          projects: [
+            {
+              id: uuid.v4(),
+              title: "Web development",
+              category: "web Design"
+            },
+            {
+              id: uuid.v4(),
+              title: "Social App",
+              category: "Mobile Dev"
+            },
+            {
+              id: uuid.v4(),
+              title: "Shopping cart",
+              category: "web Development"
+            }
+          ]
         });
 
     }
@@ -39,12 +42,19 @@ class App extends Component{
 
     }
 
+    handleDeleteProject(id){
+        let projects = this.state.projects;
+        let index = projects.findIndex(x => x.id === id);
+        projects.splice(index, 1);
+        this.setState({ projects: projects });
+    }
+
     render(){
         return <div className="app">
             <h2>Hi there,</h2>
             <div>Hello from {this.props.name} </div>
             <AddProjects AddProject={this.handleAddProject.bind(this)}/>
-            <Projects projects={this.state.projects} />
+            <Projects projects={this.state.projects} onDelete={this.handleDeleteProject.bind(this)} />
           </div>;
     }
 }
