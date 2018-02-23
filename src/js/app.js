@@ -6,7 +6,13 @@ class App extends Component{
     constructor(){
         super();
         this.state = {
-            projects: [
+            projects: []
+        }
+    }
+    componentWillMount(){
+        this.setState({
+            projects :[
+
                 {
                     title: "Web development",
                     category: "web Design"
@@ -20,8 +26,10 @@ class App extends Component{
                     category: "web Development"
                 },
             ]
-        }
+        });
+
     }
+
     render(){
         return (
             <div className='app'>
