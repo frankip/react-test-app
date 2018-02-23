@@ -4,20 +4,21 @@ import Projects from './components/projects';
 class App extends Component{
 
     constructor(){
+        super();
         this.state = {
             projects: [
                 {
-                "title": "Web development",
-                "category": "web Design"
-            },
-            {
-                "title": "Web development",
-                "category": "web Design"
-            },
-            {
-                "title": "Web development",
-                "category": "web Design"
-            },
+                    title: "Web development",
+                    category: "web Design"
+                },
+                {
+                    title: "Social App",
+                    category: "Mobile Dev"
+                },
+                {
+                    title: "Shopping cart",
+                    category: "web Development"
+                },
             ]
         }
     }
@@ -26,7 +27,7 @@ class App extends Component{
             <div className='app'>
             <h2>Hi there,</h2>
            <div >Hello from {this.props.name} </div>
-           <Projects/>
+           <Projects projects={this.state.projects}/>
             </div>
         );
     }
