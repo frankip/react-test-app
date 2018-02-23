@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Projects from './components/projects';
+import AddProjects from './components/addProject';
 
 class App extends Component{
 
@@ -30,14 +31,21 @@ class App extends Component{
 
     }
 
+    handleAddProject(project){
+        // console.log(projects)
+        let projects = this.state.projects;
+        projects.push(project);
+        this.setState({projects:projects});
+
+    }
+
     render(){
-        return (
-            <div className='app'>
+        return <div className="app">
             <h2>Hi there,</h2>
-           <div >Hello from {this.props.name} </div>
-           <Projects projects={this.state.projects}/>
-            </div>
-        );
+            <div>Hello from {this.props.name} </div>
+            <AddProjects AddProject={this.handleAddProject.bind(this)}/>
+            <Projects projects={this.state.projects} />
+          </div>;
     }
 }
 
