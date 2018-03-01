@@ -6,3 +6,8 @@ body {
     padding: 30px;
     color: rgb(16, 104, 175);
 }
+
+img {
+    width: 17em;
+    height: 15em;
+}

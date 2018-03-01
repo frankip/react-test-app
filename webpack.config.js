@@ -24,9 +24,9 @@ module.exports = {
   // index.html is used as a template in which it'll inject bundled app.
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(paths.SRC, "index.html"),
+      template: path.join(paths.SRC, "index.html")
     }),
-    new ExtractTextPlugin('style.bundle.css'),
+    new ExtractTextPlugin("style.bundle.css")
   ],
   // Loaders configuration -> ADDED IN THIS STEP
   // We are telling webpack to use "babel-loader" for .js and .jsx files
@@ -35,7 +35,7 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ["babel-loader",],
+        use: ["babel-loader"]
       },
       // CSS loader to CSS files -> ADDED IN THIS STEP
       // Files will get handled by css loader and then passed to the extract text plugin
@@ -43,9 +43,15 @@ module.exports = {
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
-          use: "css-loader",
-        }),
-      }
+          use: "css-loader"
+        })
+      },
+      // File loader for image assets -> ADDED IN THIS STEP
+      // We'll add only image extensions, but you can things like svgs, fonts and videos
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: ["file-loader"],
+      },
     ],
   },
   // Enable importing JS files without specifying their's extenstion -> ADDED IN THIS STEP
